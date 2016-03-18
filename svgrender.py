@@ -73,12 +73,13 @@ class SvgGenerator(object):
             self.put(onload)
             self.put('"')
         self.put('>')
+        self.put('\n <!-- Generated using the Little Fish Solutions LTD SVG Generator Library. Enjoy! -->\n')
     
     def end(self):
         self.put('</svg>')
     
     def line(self, x1, y1, x2, y2, stroke='black', stroke_width=1):
-        self.put('<line x1="')
+        self.put(' <line x1="')
         self.put(str(x1))
         self.put('" y1="')
         self.put(str(y1))
@@ -90,11 +91,12 @@ class SvgGenerator(object):
         self.put(stroke)
         self.put('" stroke-width="')
         self.put(str(stroke_width))
-        self.put('"/>')
+        self.put('"/>\n')
     
     def rect(self, x, y, width, height, fill=None, stroke=None,
              stroke_width=1, onmousemove=None, onmouseout=None,
              hidden=False, css_class=None, id=None, link_target=None):
+        self.put(' ')
         if link_target:
             self.put('<a xlink:href="')
             self.put(link_target)
@@ -140,11 +142,11 @@ class SvgGenerator(object):
             
         self.put('/>')
         if link_target:
-            self.put('</a>')
+            self.put('</a>\n')
 
     def text(self, text, x, y, fill='black', font_size=14, anchor='start', alignment_baseline=None,
              hidden=False, css_class=None, id=None):
-        self.put('<text x="')
+        self.put(' <text x="')
         self.put(str(x))
         self.put('" y="')
         self.put(str(y))
@@ -171,7 +173,7 @@ class SvgGenerator(object):
             self.put('"')
         self.put('>')
         self.put(str(text))
-        self.put('</text>')
+        self.put('</text>\n')
 
     def circle(self, cx, cy, r, stroke=None, fill=None, stroke_width=1):
         """
@@ -179,7 +181,7 @@ class SvgGenerator(object):
         :param cy: Center Y
         :param r: Radius
         """
-        self.put('<circle cx="')
+        self.put(' <circle cx="')
         self.put(str(cx))
         self.put('" cy="')
         self.put(str(cy))
@@ -196,13 +198,13 @@ class SvgGenerator(object):
             self.put(' stroke="')
             self.put(stroke)
             self.put('"')
-        self.put('/>')
+        self.put('/>\n')
 
     def polygon(self, points, stroke=None, fill=None, stroke_width=1, disable_anti_aliasing=False):
         """
         :param points: List of points
         """
-        self.put('<polygon points="')
+        self.put(' <polygon points="')
         self.put(' '.join(['%s,%s' % p for p in points]))
         self.put('" stroke-width="')
         self.put(str(stroke_width))
@@ -217,7 +219,7 @@ class SvgGenerator(object):
             self.put('"')
         if disable_anti_aliasing:
             self.put(' shape-rendering="crispEdges"')
-        self.put('/>')
+        self.put('/>\n')
 
     def arc(self, cx, cy, r, start_radians, end_radians, fill=None):
         """
@@ -251,14 +253,14 @@ class SvgGenerator(object):
         path.line_to(start[0], start[1])
         path.arc_to(r, r, 0, large_arc_flag, 0, end[0], end[1])
 
-        self.put('<path d="')
+        self.put(' <path d="')
         self.put(path.get_d())
         self.put('"')
         if fill:
             self.put(' fill="')
             self.put(fill)
             self.put('"')
-        self.put('/>')
+        self.put('/>\n')
 
     def get_svg(self):
         return ''.join(self.data)
