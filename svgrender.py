@@ -236,8 +236,8 @@ class SvgGenerator(object):
         :param end_radians: End of arc in radians, clockwise from vertical
         """
 
-        # This is tricky - we have to use a path, and for that we need to know the start and end points of the arc in
-        # cartesian coordinates
+        # This is tricky - we have to use a path, and for that we need to know the start and end points of the arc
+        # in cartesian coordinates
 
         start = self._polar_to_cartesian(cx, cy, r, start_radians)
         end = self._polar_to_cartesian(cx, cy, r, end_radians)
