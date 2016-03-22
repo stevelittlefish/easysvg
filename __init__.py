@@ -13,4 +13,4 @@ Please pull this before modifying, and don't forget to push again afterwards!
 
 __author__ = 'Stephen Brown (Little Fish Solutions LTD)'
 
-from svgrender import SvgGenerator, SvgPathGenerator
+from svgrender import SvgGenerator, SvgPathGenerator, rotation_transform

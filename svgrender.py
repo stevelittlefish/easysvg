@@ -145,7 +145,7 @@ class SvgGenerator(object):
             self.put('</a>\n')
 
     def text(self, text, x, y, fill='black', font_size=14, anchor='start', alignment_baseline=None,
-             hidden=False, css_class=None, id=None):
+             hidden=False, css_class=None, id=None, transform=None):
         self.put(' <text x="')
         self.put(str(x))
         self.put('" y="')
@@ -163,6 +163,10 @@ class SvgGenerator(object):
             self.put('"')
         if hidden:
             self.put(' visibility="hidden"')
+        if transform:
+            self.put(' transform="')
+            self.put(transform)
+            self.put('"')
         if css_class:
             self.put(' class="')
             self.put(css_class)
@@ -266,3 +270,5 @@ class SvgGenerator(object):
         return ''.join(self.data)
 
 
+def rotation_transform(degrees, x_center, y_center):
+    return 'rotate(%s %s %s)' % (degrees, x_center, y_center)
