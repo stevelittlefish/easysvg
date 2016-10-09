@@ -2,11 +2,10 @@
 SVG Drawing Functions, originally created for http://sleep.fig14.com/
 """
 
-__author__ = 'Stephen Brown (Little Fish Solutions LTD)'
-
 import logging
 import math
-import decimal
+
+__author__ = 'Stephen Brown (Little Fish Solutions LTD)'
 
 log = logging.getLogger(__name__)
 
