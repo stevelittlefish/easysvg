@@ -271,3 +271,13 @@ class SvgGenerator(object):
 
 def rotation_transform(degrees, x_center, y_center):
     return 'rotate(%s %s %s)' % (degrees, x_center, y_center)
+
+
+def render_error_svg(error_text, width=800, height=600, view_box_mode=True):
+    svg = SvgGenerator()
+    svg.begin(width, height, view_box_mode=view_box_mode)
+    svg.text(error_text, 10, 280, fill='#AA0000')
+    svg.end()
+
+    return svg.get_svg()
+
